@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Footwear — wintermystique</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --pink-light: #fce4ec;
@@ -15,7 +18,13 @@
       --text-light: #c9a0d4;
       --card-border: #f0c8dc;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: linear-gradient(160deg, #fce4ec 0%, #f3e5f5 50%, #ede7f6 100%);
@@ -23,7 +32,14 @@
       padding: 2rem 1rem 5rem;
       color: var(--text-dark);
     }
-    .page { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .page {
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
 
     .back-btn {
       display: inline-flex;
@@ -35,17 +51,26 @@
       padding: 6px 0;
       transition: color 0.15s;
     }
-    .back-btn:hover { color: var(--text-dark); }
+
+    .back-btn:hover {
+      color: var(--text-dark);
+    }
 
     .header {
-      background: rgba(255,255,255,0.6);
+      background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(10px);
       border: 0.5px solid var(--card-border);
       border-radius: 24px;
       padding: 2rem 1.5rem 1.8rem;
       text-align: center;
     }
-    .cat-emoji { font-size: 38px; margin-bottom: 10px; display: block; }
+
+    .cat-emoji {
+      font-size: 38px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
     .cat-title {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 26px;
@@ -53,7 +78,11 @@
       color: var(--text-dark);
       margin-bottom: 6px;
     }
-    .cat-sub { font-size: 13px; color: var(--text-mid); }
+
+    .cat-sub {
+      font-size: 13px;
+      color: var(--text-mid);
+    }
 
     .section-label {
       font-size: 11px;
@@ -63,10 +92,14 @@
       padding-left: 2px;
     }
 
-    .posts { display: flex; flex-direction: column; gap: 10px; }
+    .posts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     .post-card {
-      background: rgba(255,255,255,0.65);
+      background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(4px);
       border: 0.5px solid var(--card-border);
       border-radius: 18px;
@@ -77,7 +110,11 @@
       gap: 14px;
       transition: transform 0.15s, box-shadow 0.15s;
     }
-    .post-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(194,24,91,0.09); }
+
+    .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(194, 24, 91, 0.09);
+    }
 
     .post-icon {
       width: 52px;
@@ -91,7 +128,11 @@
       font-size: 24px;
       flex-shrink: 0;
     }
-    .post-info { flex: 1; }
+
+    .post-info {
+      flex: 1;
+    }
+
     .post-tag {
       font-size: 10px;
       letter-spacing: 1.5px;
@@ -103,40 +144,78 @@
       font-weight: 500;
       margin-bottom: 3px;
     }
-    .post-title { font-size: 14px; font-weight: 500; color: var(--text-dark); margin-bottom: 2px; line-height: 1.4; }
-    .post-desc { font-size: 11px; color: var(--text-light); line-height: 1.5; }
-    .post-arrow { font-size: 18px; color: var(--text-light); flex-shrink: 0; }
+
+    .post-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+      line-height: 1.4;
+    }
+
+    .post-desc {
+      font-size: 11px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .post-arrow {
+      font-size: 18px;
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
 
     .empty {
-      background: rgba(255,255,255,0.5);
+      background: rgba(255, 255, 255, 0.5);
       border: 0.5px dashed var(--card-border);
       border-radius: 18px;
       padding: 32px 18px;
       text-align: center;
     }
-    .empty-emoji { font-size: 32px; margin-bottom: 10px; display: block; }
-    .empty-text { font-size: 13px; color: var(--text-light); line-height: 1.7; }
 
-    .footer { text-align: center; font-size: 11px; color: var(--text-light); padding-top: 0.5rem; letter-spacing: 1px; }
-    .footer a { color: var(--purple-mid); text-decoration: none; }
+    .empty-emoji {
+      font-size: 32px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .empty-text {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-light);
+      padding-top: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .footer a {
+      color: var(--purple-mid);
+      text-decoration: none;
+    }
   </style>
 </head>
+
 <body>
-<div class="page">
+  <div class="page">
 
-  <a class="back-btn" href="index.html">← Back to home</a>
+    <a class="back-btn" href="index.html">← Back to home</a>
 
-  <div class="header">
-    <span class="cat-emoji">👟</span>
-    <h1 class="cat-title">Footwear</h1>
-    <p class="cat-sub">Sneakers, heels &amp; everyday shoes Luna loves ✨</p>
-  </div>
+    <div class="header">
+      <span class="cat-emoji">👟</span>
+      <h1 class="cat-title">Footwear</h1>
+      <p class="cat-sub">Sneakers, heels &amp; everyday shoes Luna loves ✨</p>
+    </div>
 
-  <div class="section-label">All posts</div>
+    <div class="section-label">All posts</div>
 
-  <div class="posts">
+    <div class="posts">
 
-    <!--
+      <!--
       ══════════════════════════════════════════
       HOW TO ADD A NEW POST:
       1. Create your product page e.g. sneakers-picks.html
@@ -155,19 +234,24 @@
       ══════════════════════════════════════════
     -->
 
-    <!-- EMPTY STATE — delete this block once you add your first post -->
-    <div class="empty">
-      <span class="empty-emoji">👟</span>
-      <p class="empty-text">Luna's picking out the best shoes!<br>Check back soon 💜</p>
+      <!-- EMPTY STATE — delete this block once you add your first post -->
+      <a class="post-card" href="heels.html">
+        <div class="post-icon">👠</div>
+        <div class="post-info">
+          <div class="post-tag">New</div>
+          <div class="post-title">Best Heels for Every Occasion</div>
+          <div class="post-desc">Luna's curated heel picks · budget friendly 💜</div>
+        </div>
+        <span class="post-arrow">›</span>
+      </a>
+    </div>
+
+    <div class="footer">
+      curated with love by Luna &nbsp;·&nbsp;
+      <a href="https://www.pinterest.com/wintermystique/" target="_blank">@wintermystique</a>
     </div>
 
   </div>
-
-  <div class="footer">
-    curated with love by Luna &nbsp;·&nbsp;
-    <a href="https://www.pinterest.com/wintermystique/" target="_blank">@wintermystique</a>
-  </div>
-
-</div>
 </body>
+
 </html>
