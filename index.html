@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>wintermystique — Luna's Picks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pink-light: #fce4ec;
+      --pink-mid: #f48fb1;
+      --pink-deep: #c2185b;
+      --purple-light: #f3e5f5;
+      --purple-mid: #ce93d8;
+      --purple-deep: #7b1fa2;
+      --lavender: #ede7f6;
+      --lavender-mid: #b39ddb;
+      --text-dark: #4a2060;
+      --text-mid: #9c6fa8;
+      --text-light: #c9a0d4;
+      --card-border: #f0c8dc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(160deg, #fce4ec 0%, #f3e5f5 50%, #ede7f6 100%);
+      min-height: 100vh;
+      padding: 2rem 1rem 5rem;
+      color: var(--text-dark);
+    }
+
+    .page {
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      border: 0.5px solid var(--card-border);
+      border-radius: 28px;
+      padding: 2.4rem 1.5rem 2rem;
+      text-align: center;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-moon {
+      font-size: 36px;
+      margin-bottom: 10px;
+      display: block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-tagline {
+      font-size: 13px;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-pill {
+      background: rgba(255,255,255,0.8);
+      border: 0.5px solid var(--card-border);
+      color: var(--text-mid);
+      font-size: 11px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+      letter-spacing: 0.5px;
+    }
+    .social-pill:hover {
+      background: white;
+      transform: translateY(-1px);
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      padding-left: 2px;
+    }
+
+    /* ── CATEGORIES ── */
+    .categories {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    /*
+      ══════════════════════════════════════════
+      HOW TO EDIT CATEGORIES:
+      Each .category-card links to one of your
+      product pages. Change href="YOUR_PAGE.html"
+      to the filename or URL of that page.
+      Change the emoji, name, and description too.
+      ══════════════════════════════════════════
+    */
+    .category-card {
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(4px);
+      border: 0.5px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .category-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(194,24,91,0.09);
+    }
+
+    .cat-left { display: flex; align-items: center; gap: 14px; }
+
+    .cat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--pink-light), var(--lavender));
+      border: 0.5px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .cat-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .cat-desc {
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    .cat-arrow {
+      font-size: 18px;
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
+
+    /* ── RECENT POSTS ── */
+    .recent-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    /*
+      ══════════════════════════════════════════
+      HOW TO ADD / EDIT RECENT POSTS:
+      Copy one .post-card block and paste it.
+      Change href to the link of that page.
+      Change the tag, title, date and description.
+      To remove a post, delete its .post-card block.
+      ══════════════════════════════════════════
+    */
+    .post-card {
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(4px);
+      border: 0.5px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px 18px;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(194,24,91,0.09);
+    }
+
+    .post-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .post-tag {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--pink-mid), var(--purple-mid));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+    }
+
+    .post-date {
+      font-size: 10px;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+    }
+
+    .post-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .post-desc {
+      font-size: 12px;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ── ABOUT ME ── */
+    .about {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(8px);
+      border: 0.5px solid var(--card-border);
+      border-radius: 18px;
+      padding: 18px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      animation: fadeUp 0.5s 0.3s ease both;
+    }
+
+    .about-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink-mid), var(--purple-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+      border: 2px solid white;
+    }
+
+    /*
+      ══════════════════════════════════════════
+      HOW TO ADD YOUR REAL PHOTO:
+      Replace the emoji avatar with:
+      <img src="YOUR_PHOTO_URL" style="width:52px;
+      height:52px;border-radius:50%;object-fit:cover;
+      border:2px solid white;" alt="Luna"/>
+      ══════════════════════════════════════════
+    */
+
+    .about-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .about-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 17px;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+
+    /*
+      ══════════════════════════════════════════
+      HOW TO EDIT THE ABOUT TEXT:
+      Change the text inside <p class="about-text">
+      ══════════════════════════════════════════
+    */
+    .about-text {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-light);
+      padding-top: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .footer a { color: var(--purple-mid); text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <span class="hero-moon">🌙</span>
+    <h1 class="hero-name">wintermystique</h1>
+    <p class="hero-tagline">Your cozy corner for fashion, beauty &amp; skincare finds ✨<br>curated by Luna, just for you</p>
+    <div class="hero-socials">
+      <!-- Replace # with your actual social links -->
+      <a class="social-pill" href="https://www.pinterest.com/wintermystique/" target="_blank">📌 Pinterest</a>
+      <a class="social-pill" href="#" target="_blank"></a>
+      <a class="social-pill" href="#" target="_blank"></a>
+    </div>
+  </div>
+
+  <!-- ── CATEGORIES ── -->
+  <div>
+    <div class="section-header">Browse by category</div>
+    <div class="categories">
+
+      <!--
+        CLOTHING CATEGORY
+        Change href to your clothing page filename e.g. href="lunas-picks.html"
+      -->
+      <a class="category-card" href="clothing.html">
+        <div class="cat-left">
+          <div class="cat-icon">👗</div>
+          <div>
+            <div class="cat-name">Clothing</div>
+            <div class="cat-desc">Corsets, tops, co-ords &amp; more</div>
+          </div>
+        </div>
+        <span class="cat-arrow">›</span>
+      </a>
+
+      <!--
+        MAKEUP CATEGORY
+        Change href to your makeup page filename
+      -->
+      <a class="category-card" href="makeup.html">
+        <div class="cat-left">
+          <div class="cat-icon">💄</div>
+          <div>
+            <div class="cat-name">Make Up</div>
+            <div class="cat-desc">Lips, eyes, base &amp; glam picks</div>
+          </div>
+        </div>
+        <span class="cat-arrow">›</span>
+      </a>
+
+      <!--
+        SKINCARE CATEGORY
+        Change href to your skincare page filename
+      -->
+      <a class="category-card" href="skincare.html">
+        <div class="cat-left">
+          <div class="cat-icon">🧴</div>
+          <div>
+            <div class="cat-name">Skincare</div>
+            <div class="cat-desc">Serums, moisturisers &amp; routines</div>
+          </div>
+        </div>
+        <span class="cat-arrow">›</span>
+      </a>
+
+      <a class="category-card" href="footwear.html">
+        <div class="cat-left">
+          <div class="cat-icon">👟</div>
+          <div>
+            <div class="cat-name">Footwear</div>
+            <div class="cat-desc">Sneakers, heels &amp; everyday shoes</div>
+          </div>
+        </div>
+        <span class="cat-arrow">›</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── RECENT POSTS ── -->
+  <div>
+    <div class="section-header">Recent posts</div>
+    <div class="recent-posts">
+
+      <!--
+        RECENT POST 1
+        Change href, tag, date, title and description
+      -->
+      <a class="post-card" href="lunas-picks.html">
+        <div class="post-top">
+          <span class="post-tag">Clothing</span>
+          <span class="post-date">Jan 2025</span>
+        </div>
+        <div class="post-title">Corset Fitted Tops — 4 picks for every budget</div>
+        <div class="post-desc">From classic black to premium satin, Luna's curated the best corset tops under ₹1500 💜</div>
+      </a>
+
+      <!--
+        RECENT POST 2 — replace with your next page
+      -->
+      <a class="post-card" href="#">
+        <div class="post-top">
+          <span class="post-tag">Make Up</span>
+          <span class="post-date">Coming soon</span>
+        </div>
+        <div class="post-title">Best drugstore lipsticks under ₹500</div>
+        <div class="post-desc">Luna tests the most hyped affordable lipsticks so you don't have to ✨</div>
+      </a>
+
+      <!--
+        RECENT POST 3 — replace with your next page
+      -->
+      <a class="post-card" href="#">
+        <div class="post-top">
+          <span class="post-tag">Skincare</span>
+          <span class="post-date">Coming soon</span>
+        </div>
+        <div class="post-title">Winter skincare routine on a budget</div>
+        <div class="post-desc">Everything Luna uses to keep her skin glowy through the cold months 🌙</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── ABOUT ME ── -->
+  <div class="about">
+    <div class="about-avatar">🌙</div>
+    <div>
+      <div class="about-label">About</div>
+      <div class="about-name">Luna</div>
+      <!--
+        EDIT YOUR BIO BELOW
+      -->
+      <p class="about-text">Hey! I'm Luna — I love finding cute, affordable fashion &amp; beauty picks so you don't have to scroll for hours. Everything here is hand-picked and budget-friendly. Welcome to wintermystique 💜</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    curated with love by Luna &nbsp;·&nbsp;
+    <a href="https://www.pinterest.com/wintermystique/" target="_blank">@wintermystique</a>
+  </div>
+
+</div>
+</body>
+</html>
